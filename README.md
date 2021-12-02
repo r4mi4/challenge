@@ -21,7 +21,7 @@ $ docker-compose up -d
 if you want to create super user :
 ```bash
 # get container_id
-$ sudo docker ps -aqf "name=app"
+$ docker ps -aqf "name=app"
 $ docker exec -it container_id python manage.py createsuperuser
 ```
 # Challenge 3
@@ -47,7 +47,7 @@ $ docker-compose up -d
 if you want to create super user :
 ```bash
 # get container_id
-$ sudo docker ps -aqf "name=app"
+$ docker ps -aqf "name=app"
 $ docker exec -it container_id python manage.py createsuperuser
 ```
 
