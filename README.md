@@ -51,4 +51,5 @@ $ sudo docker ps -aqf "name=app"
 $ docker exec -it container_id python manage.py createsuperuser
 ```
 
-Open ``localhost`` in your browser.
+
+### Open ``localhost`` in your browser.
