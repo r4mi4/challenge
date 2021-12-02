@@ -24,8 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # ...
+    # our apps
     'accounts.apps.AccountsConfig',
+
     "rest_framework",
     "rest_framework_api_key",
 ]
@@ -123,4 +124,5 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# The maximum number that the user can send to the API key
 RATE_LIMIT_TO_API_KEY = 1000

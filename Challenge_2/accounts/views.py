@@ -11,6 +11,10 @@ from .models import BlackToken, Profile
 
 
 class ProfileView(generics.RetrieveUpdateAPIView):
+    """
+        user profile : => GET method
+        updating user profile : => PUT method
+    """
     queryset = User.objects.all()
     permission_classes = (IsTokenValid, IsAuthenticated)
     serializer_class = ProfileSerializer
@@ -24,9 +28,9 @@ class LogoutView(APIView):
 
     def post(self, request):
         access_token = request.auth
+        # Put user access token in the block list
         BlackToken.objects.get_or_create(user_id=access_token['user_id'], token=access_token)
         tokens = OutstandingToken.objects.filter(user_id=access_token['user_id'])
         for token in tokens:
             BlacklistedToken.objects.get_or_create(token=token)
-
         return Response(status=status.HTTP_205_RESET_CONTENT)

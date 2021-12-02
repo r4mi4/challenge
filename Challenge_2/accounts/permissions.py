@@ -4,6 +4,9 @@ from .models import BlackToken
 
 
 class IsTokenValid(BasePermission):
+    """
+        check token not in block list
+    """
     def has_permission(self, request, view):
         is_allowed_user = True
         token = request.auth
@@ -16,9 +19,8 @@ class IsTokenValid(BasePermission):
         return is_allowed_user
 
 
-"""
-    NOTE: if we want to check owner really
-            then we can use the following class
+"""  
+##   there is another way to check owner:  ##
 
 class IsOwner(BasePermission):
     def has_permission(self, request, view):

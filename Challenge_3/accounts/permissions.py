@@ -10,7 +10,10 @@ class HasOrganizationAPIKey(BaseHasAPIKey):
 
 
 class RateLimit(BasePermission):
-
+    """
+    get api key from HEADER and 
+    Check that the number of times the API key is called
+    """
     def has_permission(self, request, view):
         key = request.META["HTTP_AUTHORIZATION"].split()[1]
         api_key = OrganizationAPIKey.objects.get_from_key(key)
@@ -22,6 +25,9 @@ class RateLimit(BasePermission):
 
 
 class ValidIp(BasePermission):
+    """
+        check IP that is not in our blacklist
+    """
     def get_client_ip(self, request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
